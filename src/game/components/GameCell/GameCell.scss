@@ -1,0 +1,13 @@
+.game-cell {
+    z-index: 100;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    &._active {
+        background: black;
+    }
+
+    &._test {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}

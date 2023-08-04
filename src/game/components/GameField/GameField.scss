@@ -1,0 +1,10 @@
+.game-field {
+    border: 2px solid black;
+    user-select: none;
+    position: absolute;
+    background: white;
+
+    &._test{
+        border: none;
+    }
+}
