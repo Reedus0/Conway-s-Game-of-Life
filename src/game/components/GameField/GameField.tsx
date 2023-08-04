@@ -17,9 +17,10 @@ const GameField: FC<GameFieldProps> = ({ field, test }) => {
             }}
         >
             {field.getCells().map((cell: Cell) =>
-                <>
-                    {window.innerWidth > cell['x'] * 20 && window.innerHeight > cell['y'] * 20 ? <GameCell x={cell['x']} y={cell['y']} test={test} active={test ? true : cell.getActive()} /> : <></>}
-                </>
+                // <>
+                //     {window.innerWidth > cell['x'] * 20 && window.innerHeight > cell['y'] * 20 ? <GameCell x={cell['x']} y={cell['y']} test={test} active={test ? true : cell.getActive()} /> : <></>}
+                // </>
+                <GameCell x={cell['x']} y={cell['y']} test={test} active={test ? true : cell.getActive()} />
             )}
         </div>
     )

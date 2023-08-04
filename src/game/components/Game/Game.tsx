@@ -44,17 +44,17 @@ const Game: FC<GameProps> = ({ }) => {
         isMoving = false
     }
 
-    // document.onwheel = (e: any) => {
-    //     const drawerElement: HTMLElement = document.querySelector('.game')!
-    //     const matrix = new WebKitCSSMatrix((window.getComputedStyle(drawerElement)).transform)
-    //     let editorCurrentScale = matrix['a']
-    //     if (e.deltaY < 0 && editorCurrentScale < 3.2) {
-    //         editorCurrentScale += 0.2
-    //     } else if (e.deltaY > 0 && editorCurrentScale > 0.2) {
-    //         editorCurrentScale -= 0.2
-    //     }
-    //     drawerElement.style.transform = `scale(${editorCurrentScale})`
-    // }
+    document.onwheel = (e: any) => {
+        const drawerElement: HTMLElement = document.querySelector('.game')!
+        const matrix = new WebKitCSSMatrix((window.getComputedStyle(drawerElement)).transform)
+        let editorCurrentScale = matrix['a']
+        if (e.deltaY < 0 && editorCurrentScale < 3.2) {
+            editorCurrentScale += 0.2
+        } else if (e.deltaY > 0 && editorCurrentScale > 0.2) {
+            editorCurrentScale -= 0.2
+        }
+        drawerElement.style.transform = `scale(${editorCurrentScale})`
+    }
 
 
 
