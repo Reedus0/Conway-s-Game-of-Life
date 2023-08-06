@@ -11,7 +11,7 @@ interface GameProps {
 const Game: FC<GameProps> = ({ }) => {
 
     const [mainGame, setMainGame] = useState<MainGame>(
-        new MainGame(100)
+        new MainGame()
     );
 
     let isMoving: boolean = false
@@ -31,7 +31,7 @@ const Game: FC<GameProps> = ({ }) => {
             firstCordsY = e.screenY
         }
     }
-    
+
     document.onmousedown = (e: any) => {
         firstCordsX = e.screenX
         firstCordsY = e.screenY
@@ -55,9 +55,6 @@ const Game: FC<GameProps> = ({ }) => {
         }
         drawerElement.style.transform = `scale(${editorCurrentScale})`
     }
-
-
-
 
     return (
         <div className='game'>

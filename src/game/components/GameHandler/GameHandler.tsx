@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useReducer, useRef, useState } from 'react'
 import GameField from '../GameField/GameField';
 import { MainGame } from '../../models/MainGame';
-import { getCellFromHTML } from '../../utils';
+import { createCell } from '../../utils';
+import { Cell } from '../../models/Cell';
 
 interface GameHandlerProps {
     mainGame: MainGame
@@ -22,11 +23,8 @@ const GameHandler: FC<GameHandlerProps> = ({ mainGame }) => {
     }
 
     document.onclick = (e: any) => {
-        if (e.target.classList.contains('game-cell')) {
-            const currentCell = getCellFromHTML(e.target, mainGame['cellsField'])
-            currentCell.setActive(!currentCell.getActive())
-            forceUpdate()
-        }
+        createCell(e, mainGame['cellsField'])
+        forceUpdate()
     }
 
     useEffect(() => {
@@ -40,9 +38,9 @@ const GameHandler: FC<GameHandlerProps> = ({ mainGame }) => {
     return (
         <div className='game-handler'>
             <button onClick={() => setIsPlaying(!isPlaying)}>Start</button>
+            <button onClick={() => nextStep()}>Step</button>
             <input value={playSpeed} onChange={(e: any) => setPlaySpeed(e.target.value)} />
             <GameField field={mainGame['cellsField']} test={false} />
-            <GameField field={mainGame['chachedCellsField']} test={true} />
         </div>
     )
 }

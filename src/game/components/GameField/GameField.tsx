@@ -11,11 +11,7 @@ interface GameFieldProps {
 
 const GameField: FC<GameFieldProps> = ({ field, test }) => {
     return (
-        <div className={['game-field', test ? '_test' : ''].join(' ')}
-            style={{
-                width: field['size'] * 20, height: field['size'] * 20,
-            }}
-        >
+        <div className={['game-field', test ? '_test' : ''].join(' ')}>
             {field.getCells().map((cell: Cell) =>
                 // <>
                 //     {window.innerWidth > cell['x'] * 20 && window.innerHeight > cell['y'] * 20 ? <GameCell x={cell['x']} y={cell['y']} test={test} active={test ? true : cell.getActive()} /> : <></>}

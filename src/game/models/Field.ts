@@ -1,25 +1,17 @@
 import { Cell } from "./Cell";
 
 export class Field {
-    private size: number = 10
     private cells: Cell[] = []
 
-    constructor(size: number) {
-        this.size = size
-        for (let i = 0; i < this.size; i++) {
-            for (let j = 0; j < this.size; j++) {
-                this.cells.push(new Cell(i, j))
-            }
-        }
-    }
-
-    public setCells(cells: Cell[]): void {
+    public setCells(cells: Cell[]): Cell[] {
         this.cells = cells
+        return this.cells
     }
 
     public getCells(): Cell[] {
         return this.cells
     }
+
 
     public addCell(cell: Cell): Cell {
         this.cells.push(cell)
@@ -30,8 +22,9 @@ export class Field {
         return this.cells.filter((cell: Cell) => cell['x'] === x && cell['y'] === y)[0]
     }
 
-    public deleteCell(x: number, y: number): void {
+    public deleteCell(x: number, y: number): Cell {
         this.cells = this.cells.filter((cell: Cell) => cell['x'] !== x && cell['y'] !== y)
+        return this.cells.filter((cell: Cell) => cell['x'] === x && cell['y'] === y)[0]
     }
 
     public getAllCellNeighbours(cell: Cell): Cell[] {
@@ -50,6 +43,10 @@ export class Field {
             const currentCell = this.getCell(cellPosibleNeighbours[i][0], cellPosibleNeighbours[i][1])
             if (currentCell !== undefined) {
                 result.push(currentCell)
+            } else {
+                if (cell.getActive()) {
+                    this.addCell(new Cell(cellPosibleNeighbours[i][0], cellPosibleNeighbours[i][1]))
+                }
             }
         }
         return result
