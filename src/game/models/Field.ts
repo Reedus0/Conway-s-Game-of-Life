@@ -22,9 +22,10 @@ export class Field {
         return this.cells.filter((cell: Cell) => cell['x'] === x && cell['y'] === y)[0]
     }
 
-    public deleteCell(x: number, y: number): Cell {
-        this.cells = this.cells.filter((cell: Cell) => cell['x'] !== x && cell['y'] !== y)
-        return this.cells.filter((cell: Cell) => cell['x'] === x && cell['y'] === y)[0]
+    public deleteCell(x: number, y: number) {
+        const deleteCell = this.cells.filter((cell: Cell) => cell['x'] === x && cell['y'] === y)[0]
+        this.cells = this.cells.filter((cell: Cell) => cell !== deleteCell)
+        return deleteCell
     }
 
     public getAllCellNeighbours(cell: Cell): Cell[] {
