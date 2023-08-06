@@ -2,6 +2,7 @@ import React, { FC, useReducer, useState } from 'react'
 import { MainGame } from '../../models/MainGame';
 import GameHandler from '../GameHandler/GameHandler';
 import './Game.scss'
+import { getGameCords } from '../../utils';
 
 interface GameProps {
 
@@ -19,11 +20,9 @@ const Game: FC<GameProps> = ({ }) => {
     let firstCordsX: number = 0
     let firstCordsY: number = 0
 
-    document.onmousemove = (e: any) => {
+    const onMoveMouse = (e: any) => {
         if (isMoving && isPlaying) {
-            const gameElement: HTMLElement = document.getElementById('game')!
-            const currentX = Number(window.getComputedStyle(gameElement).left.split('px')[0])
-            const currentY = Number(window.getComputedStyle(gameElement).top.split('px')[0])
+            const { currentX, currentY, gameElement } = getGameCords()
             const moveCoefficient: number = 0.7;
             gameElement.style.left = currentX + ((e.screenX - firstCordsX) * moveCoefficient) + 'px'
             gameElement.style.top = currentY + ((e.screenY - firstCordsY) * moveCoefficient) + 'px'
@@ -32,17 +31,39 @@ const Game: FC<GameProps> = ({ }) => {
         }
     }
 
-    document.onmousedown = (e: any) => {
+
+    const onMoveTouch = (e: any) => {
+        if (isMoving && isPlaying) {
+            const { currentX, currentY, gameElement } = getGameCords()
+            const moveCoefficient: number = 1;
+            gameElement.style.left = currentX + ((e['changedTouches'][0].screenX - firstCordsX) * moveCoefficient) + 'px'
+            gameElement.style.top = currentY + ((e['changedTouches'][0].screenY - firstCordsY) * moveCoefficient) + 'px'
+            firstCordsX = e['changedTouches'][0].screenX
+            firstCordsY = e['changedTouches'][0].screenY
+        }
+    }
+
+    const onDown = (e: any) => {
         firstCordsX = e.screenX
         firstCordsY = e.screenY
         isMoving = true
     }
 
-    document.onmouseup = (e: any) => {
+    const onUp = (e: any) => {
         firstCordsX = 0
         firstCordsY = 0
         isMoving = false
     }
+
+
+    document.onmousemove = onMoveMouse
+    document.onmousedown = onDown
+    document.onmouseup = onUp
+
+    document.ontouchmove = onMoveTouch
+    document.ontouchstart = onDown
+    document.ontouchend = onDown
+
 
     // document.onwheel = (e: any) => {
     //     const drawerElement: HTMLElement = document.querySelector('.game')!

@@ -1,8 +1,10 @@
-import React, { FC, useEffect, useReducer, useRef, useState } from 'react'
+import React, { FC, useReducer} from 'react'
 import GameField from '../GameField/GameField';
 import { MainGame } from '../../models/MainGame';
 import { createCell, deleteCell } from '../../utils';
 import GamePanel from '../GamePanel/GamePanel';
+
+import './GameHandler.scss'
 
 interface GameHandlerProps {
     mainGame: MainGame

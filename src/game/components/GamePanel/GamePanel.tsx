@@ -53,23 +53,23 @@ const GamePanel: FC<GamePanelProps> = ({ mainGame, forceUpdate, isPlaying, setIs
         <div className='game-panel'>
             <div className='game-panel__inner'>
                 <Link to='/' className='game-panel__logo'>
-                    <img className='game-panel__logo-img' src={require('./../../../img/logo.png')} />
+                    <img className='game-panel__img' src={require('./../../../img/logo.png')} />
                 </Link>
                 <button
                     onClick={() => setIsPlaying(!isPlaying)}
                     className='game-panel__button'
                 >
                     {!isPlaying ?
-                        <img className='game-panel__button-img _play' src={require('./../../../img/play.png')} />
+                        <img className='game-panel__img _play' src={require('./../../../img/play.png')} />
                         :
-                        <img className='game-panel__button-img _pause' src={require('./../../../img/pause.png')} />
+                        <img className='game-panel__img _pause' src={require('./../../../img/pause.png')} />
                     }
                 </button>
                 <button
                     onClick={() => setTheme(theme === IThemes.DARK ? IThemes.LIGHT : IThemes.DARK)}
                     className='game-panel__theme'
                 >
-                    <img className='game-panel__theme-img' src={require('./../../../img/theme.png')} />
+                    <img className='game-panel__img' src={require('./../../../img/theme.png')} />
                 </button>
             </div>
         </div>

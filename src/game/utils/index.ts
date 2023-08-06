@@ -1,17 +1,12 @@
 import { Cell } from "../models/Cell"
 import { Field } from "../models/Field"
 
-export const template = () => null
-
-
 export const createCell = (event: any, field: Field) => {
 
     const gameElement = document.getElementById('game') as HTMLElement
 
     const matrix = new WebKitCSSMatrix((window.getComputedStyle(gameElement)).transform)
     const scale = matrix['a']
-
-    console.log(scale)
 
     const offsetX = Number(window.getComputedStyle(gameElement).left.split('px')[0])
     const offsetY = Number(window.getComputedStyle(gameElement).top.split('px')[0])
@@ -37,4 +32,13 @@ export const deleteCell = (element: HTMLElement, field: Field) => {
     const cellY = cellTop / 20
 
     return field.deleteCell(cellX, cellY)
+}
+
+export const getGameCords = (): { currentX: number, currentY: number, gameElement: HTMLElement } => {
+
+    const gameElement: HTMLElement = document.getElementById('game')!
+    const currentX = Number(window.getComputedStyle(gameElement).left.split('px')[0])
+    const currentY = Number(window.getComputedStyle(gameElement).top.split('px')[0])
+
+    return { currentX, currentY, gameElement }
 }

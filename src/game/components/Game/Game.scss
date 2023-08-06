@@ -1,11 +1,11 @@
 @import './../../../styles/Themes.scss';
 
 .game {
+    user-select: none;
     transition: background 0.3s ease 0s;
     width: 100vw;
     height: 100vh;
     user-select: none;
-
 
     @include themify($themes) {
         background: themed('secondColor');

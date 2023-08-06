@@ -1,9 +1,10 @@
 @import './../../../styles/Themes.scss';
 
 .game-panel {
+    user-select: none;
     transition: all 0.3s ease 0s;
     position: fixed;
-    top: calc(50vh - 240px);
+    top: calc(50vh - 250px);
     left: 0;
     padding: 40px 30px;
     border-top-right-radius: 30px;
@@ -12,16 +13,39 @@
     box-sizing: border-box;
 
     @include themify($themes) {
-      background: themed('mainColor');
+        background: themed('mainColor');
+    }
+
+    @media (max-width: 991px) {
+        top: calc(50vh - 200px);
+    }
+
+    @media (max-width: 767px) {
+        left: calc(15vw - 30px);
+        top: 0;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 30px;
+        padding: 0px 30px;
     }
 
 
     &__inner {
-        height: 400px;
+        height: 420px;
         display: flex;
 
         flex-direction: column;
         justify-content: space-between;
+
+        @media (max-width: 991px) {
+            height: 320px;
+        }
+
+        @media (max-width: 767px) {
+            flex-direction: row;
+            height: 80px;
+            width: 70vw;
+        }
+
     }
 
     &__logo {
@@ -31,6 +55,7 @@
     }
 
     &__button {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,6 +65,7 @@
     }
 
     &__theme {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -48,30 +74,20 @@
         border: none;
     }
 
-    &__logo-img {
+    &__img {
         transition: all 0.3s ease 0s;
         width: 80px;
         height: 80px;
 
-        @include themify($themes) {
-            filter: invert(themed('imgInvert'));
+        @media (max-width: 991px) {
+            width: 55px;
+            height: 55px;
         }
-    }
 
-    &__button-img {
-        transition: all 0.3s ease 0s;
-        width: 80px;
-        height: 80px;
-
-        @include themify($themes) {
-            filter: invert(themed('imgInvert'));
+        @media (max-width: 767px) {
+            width: 40px;
+            height: 40px;
         }
-    }
-
-    &__theme-img {
-        transition: all 0.3s ease 0s;
-        width: 80px;
-        height: 80px;
 
         @include themify($themes) {
             filter: invert(themed('imgInvert'));

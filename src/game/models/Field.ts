@@ -12,7 +12,6 @@ export class Field {
         return this.cells
     }
 
-
     public addCell(cell: Cell): Cell {
         this.cells.push(cell)
         return cell
