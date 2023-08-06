@@ -1,6 +1,19 @@
-.game{
+@import './../../../styles/Themes.scss';
+
+.game {
+    transition: background 0.3s ease 0s;
+    width: 100vw;
+    height: 100vh;
     user-select: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+
+
+    @include themify($themes) {
+        background: themed('secondColor');
+    }
+
+    &__inner{
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 }

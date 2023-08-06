@@ -1,10 +1,14 @@
 
 $themes: (
   light: (
-    colorText: #000,
+    mainColor: #000,
+    secondColor: #fff,
+    imgInvert: 1,
   ),
   dark: (
-    colorText: #fff,
+    mainColor: #fff,
+    secondColor: #000,
+    imgInvert: 0,
   ),
 );
 

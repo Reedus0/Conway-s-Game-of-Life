@@ -1,0 +1,80 @@
+@import './../../../styles/Themes.scss';
+
+.game-panel {
+    transition: all 0.3s ease 0s;
+    position: fixed;
+    top: calc(50vh - 240px);
+    left: 0;
+    padding: 40px 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    box-sizing: border-box;
+
+    @include themify($themes) {
+      background: themed('mainColor');
+    }
+
+
+    &__inner {
+        height: 400px;
+        display: flex;
+
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: none;
+        border: none;
+    }
+
+    &__theme {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: none;
+        border: none;
+    }
+
+    &__logo-img {
+        transition: all 0.3s ease 0s;
+        width: 80px;
+        height: 80px;
+
+        @include themify($themes) {
+            filter: invert(themed('imgInvert'));
+        }
+    }
+
+    &__button-img {
+        transition: all 0.3s ease 0s;
+        width: 80px;
+        height: 80px;
+
+        @include themify($themes) {
+            filter: invert(themed('imgInvert'));
+        }
+    }
+
+    &__theme-img {
+        transition: all 0.3s ease 0s;
+        width: 80px;
+        height: 80px;
+
+        @include themify($themes) {
+            filter: invert(themed('imgInvert'));
+        }
+    }
+}

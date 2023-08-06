@@ -6,9 +6,11 @@ import GamePanel from '../GamePanel/GamePanel';
 
 interface GameHandlerProps {
     mainGame: MainGame
+    isPlaying: boolean
+    setIsPlaying: Function
 }
 
-const GameHandler: FC<GameHandlerProps> = ({ mainGame }) => {
+const GameHandler: FC<GameHandlerProps> = ({ mainGame, isPlaying, setIsPlaying }) => {
 
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
@@ -28,7 +30,7 @@ const GameHandler: FC<GameHandlerProps> = ({ mainGame }) => {
 
     return (
         <div className='game-handler'>
-            <GamePanel mainGame={mainGame} forceUpdate={forceUpdate} />
+            <GamePanel mainGame={mainGame} forceUpdate={forceUpdate} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
             <GameField field={mainGame['cellsField']} test={false} />
         </div>
     )

@@ -19,8 +19,9 @@ const App: FC = () => {
     setTheme(localStorage.getItem('default-theme') ? localStorage.getItem('default-theme') as IThemes : IThemes.LIGHT)
   }, [])
 
-
-
+  useEffect(() => {
+      
+  }, [theme])
 
 
   return (

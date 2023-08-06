@@ -6,7 +6,7 @@ export const template = () => null
 
 export const createCell = (event: any, field: Field) => {
 
-    const gameElement = document.querySelector('.game') as HTMLElement
+    const gameElement = document.getElementById('game') as HTMLElement
 
     const matrix = new WebKitCSSMatrix((window.getComputedStyle(gameElement)).transform)
     const scale = matrix['a']
@@ -20,7 +20,7 @@ export const createCell = (event: any, field: Field) => {
     const cellTop: number = event.y - offsetY
 
     const cellX = Math.floor(cellLeft / 20)
-    const cellY = Math.floor(cellTop / 20) - 1
+    const cellY = Math.floor(cellTop / 20)
 
     const newCell = new Cell(cellX, cellY)
     newCell.setActive(true)

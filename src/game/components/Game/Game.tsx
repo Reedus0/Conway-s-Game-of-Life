@@ -1,8 +1,7 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import { MainGame } from '../../models/MainGame';
-
-import './Game.scss'
 import GameHandler from '../GameHandler/GameHandler';
+import './Game.scss'
 
 interface GameProps {
 
@@ -10,6 +9,7 @@ interface GameProps {
 
 const Game: FC<GameProps> = ({ }) => {
 
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [mainGame, setMainGame] = useState<MainGame>(
         new MainGame()
     );
@@ -20,8 +20,8 @@ const Game: FC<GameProps> = ({ }) => {
     let firstCordsY: number = 0
 
     document.onmousemove = (e: any) => {
-        if (isMoving) {
-            const gameElement: HTMLElement = document.querySelector('.game')!
+        if (isMoving && isPlaying) {
+            const gameElement: HTMLElement = document.getElementById('game')!
             const currentX = Number(window.getComputedStyle(gameElement).left.split('px')[0])
             const currentY = Number(window.getComputedStyle(gameElement).top.split('px')[0])
             const moveCoefficient: number = 0.7;
@@ -58,7 +58,9 @@ const Game: FC<GameProps> = ({ }) => {
 
     return (
         <div className='game'>
-            <GameHandler mainGame={mainGame} />
+            <div className='game__inner' id='game'>
+                <GameHandler mainGame={mainGame} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+            </div>
         </div>
     )
 }

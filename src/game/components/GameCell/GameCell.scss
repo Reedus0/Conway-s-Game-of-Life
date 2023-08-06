@@ -1,13 +1,16 @@
+@import './../../../styles/Themes.scss';
+
 .game-cell {
+    transition: background 0.3s ease 0s;
     z-index: 100;
     position: absolute;
     width: 20px;
     height: 20px;
+
     &._active {
-        background: black;
+        @include themify($themes) {
+          background: themed('mainColor');
+        }
     }
 
-    &._test {
-        background: rgba(0, 0, 0, 0.5);
-    }
 }
