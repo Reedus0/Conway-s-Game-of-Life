@@ -8,7 +8,6 @@ import './styles/App.scss';
 
 const App: FC = () => {
 
-
   const { prompt } = useTypedSelector(state => state.prompt);
   const { notification } = useTypedSelector(state => state.notification);
   const { theme } = useTypedSelector(state => state.themes);
