@@ -1,0 +1,17 @@
+@import './../../../styles/Themes.scss';
+
+.game-cell {
+    user-select: none;
+    transition: background 0.3s ease 0s;
+    z-index: 100;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
+    &._active {
+        @include themify($themes) {
+          background: themed('mainColor');
+        }
+    }
+
+}

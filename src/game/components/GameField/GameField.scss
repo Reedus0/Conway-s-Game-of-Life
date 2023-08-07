@@ -1,0 +1,9 @@
+.game-field {
+    user-select: none;
+    position: absolute;
+    background: white;
+
+    &._test{
+        border: none;
+    }
+}
